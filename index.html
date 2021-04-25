@@ -16,18 +16,33 @@
 </head>
 <body>
     <header>Weather Dashboard</header>
-    <div class="container">
+    <div class="container-fluid">
         <div class ="row">
-            <div class="col-xl-3">
+            <div class="col-2".col-2>
                 <h3 class="search-text">Search for a City:</h3>
                 <input class="search-box" type="text" id="searchCity" placeholder="Austin"/>
                 <button class="search-btn" onclick="runProgram()">Search</button>
                 <hr>
+                <div id="history-btns"></div>
 
             </div>
-            <div id="response-header"><span id="currentDay"></span></div>
-            <div class="col-xl-9">
-                <div id= "weather-container"></div>
+            <div class="col-10".col-10>
+                <div class="current-day">
+                    <div id= "response-header"></div>
+                    <div id= "temp-container"></div>
+                    <div id= "wind-container"></div>
+                    <div id= "humidity-container"></div>
+                    <div id= "uv-container"></div>
+                </div>
+                <div class="container-fluid future-days">
+                    <div class="row">
+                        <div id= "day" class="future"></div>
+                        <div id= "day" class="future"></div>
+                        <div id= "day" class="future"></div>
+                        <div id= "day" class="future"></div>
+                        <div id= "day" class="future"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -36,7 +51,7 @@
     </div>
 
 
-
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./js/script.js"></script>
 </body>

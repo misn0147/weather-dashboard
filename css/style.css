@@ -8,7 +8,7 @@ header {
 }
 
 .row {
-    border: blue solid 2px;
+    width: 100%;
 }
 
 .search-text {
@@ -52,4 +52,18 @@ hr {
     border: none;
     border-radius: 6px;
     width: 100%;
+}
+
+.current-day {
+    border: black solid 1px;
+    margin: 4px;
+    padding: 4px;
+    min-height: 250px;
+}
+
+.future {
+    height: 250px;
+    width: 200px;
+    margin: 10px;
+    background-color: rgb(33, 33, 129);
 }
