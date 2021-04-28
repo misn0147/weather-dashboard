@@ -1,6 +1,12 @@
 var currentDay = (moment().format('(MM-DD-YYYY)'));
 console.log (currentDay);
 
+
+function showFuture() {
+    var futureDaysEl = document.querySelector("#futureDays");
+    futureDaysEl.removeAttribute("class", "hide");
+}
+
 function runProgram() {
     var cityName = document.getElementById('searchCity').value;
     console.log(cityName);
@@ -36,20 +42,22 @@ function runProgram() {
 
             var uvResult = weatherResult.current.uvi;
             var uvContainerEl = document.querySelector('#uv-container');
-            uvContainerEl.innerHTML = '<h5>' + "UV Index: " + uvResult + '<h5>';
-
-        //     function futureWeather(dailyWeatherResult) {
+            uvContainerEl.innerHTML = '<h5>' + "UV Index: " + uvResult + '<h5>';           
         
-        //         for (var i = 0; i < weatherResult.length; i++) {
-        //             futureWeather(weatherResult.daily[i])
-        //             // var futureTempEl = dailyWeatherResult.temp.day;
-        //             // var futureWindEl = dailyWeatherResult.wind_speed;
-        //             // var futureHumidEl = dailyWeatherResult.humidity;
-        //             // var futureContainerEl = document.querySelector("#day")
-        //             // futureContainerEl.innerHTML = '<h5>' + futureTempEl + futureWindEl + futureHumidEl + '<h5>';
-        //             console.log(futureWeather);
-        //         }
-        //     }
-        // futureWeather();
+
+            var tomorrow = (moment().add(1, 'days').format('MM-DD-YYYY'))
+            var dayOneTemp = weatherResult.daily[0].temp.day;
+            var dayOneWind = weatherResult.daily[0].wind_speed;
+            var dayOneHumid = weatherResult.daily[0].humidity;
+            var dayOneEl = document.querySelector('#day-one');
+            dayOneEl.innerHTML = '<h4>' + tomorrow + '<br>' + '<br>' + "Temp: " + dayOneTemp + '<br>' + "Wind: " + dayOneWind + " MPH" + '<br>' + "Humidity: " + dayOneHumid + "%" + '<h4>';
+
+            var twoDays = (moment().add(2, 'days').format('MM-DD-YYYY'))
+            var dayTwoTemp = weatherResult.daily[1].temp.day;
+            var dayTwoWind = weatherResult.daily[1].wind_speed;
+            var dayTwoHumid = weatherResult.daily[1].humidity;
+            var dayTwoEl = document.querySelector('#day-two');
+            dayTwoEl.innerHTML = '<h4>' + twoDays + '<br>' + '<br>' + "Temp: " + dayTwoTemp + '<br>' + "Wind: " + dayTwoWind + " MPH" + '<br>' + "Humidity: " + dayTwoHumid + "%" + '<h4>';
         })
+    showFuture();
 };

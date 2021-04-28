@@ -61,9 +61,15 @@ hr {
     min-height: 250px;
 }
 
+.hide {
+    display: none;
+}
+
 .future {
-    height: 250px;
+    height: 200px;
     width: 200px;
     margin: 10px;
     background-color: rgb(33, 33, 129);
+    color: white;
+    padding: 4px;
 }
