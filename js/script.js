@@ -28,6 +28,14 @@ function runProgram() {
         })
         .then(function(weatherResult) {
             console.log(weatherResult);
+
+            var imageEl = document.querySelector("#icon");
+            var currentIcon = weatherResult.current.weather[0].icon;
+            var iconEl = document.createElement('img');
+            iconEl.setAttribute('src', 'http://openweathermap.org/img/wn/' + currentIcon + '@2x.png');
+            imageEl.appendChild(iconEl);
+
+
             var tempResult = weatherResult.current.temp;
             var tempContainerEl = document.querySelector('#temp-container');
             tempContainerEl.innerHTML = '<h5>' + "Temp: " + tempResult + '<h5>';
