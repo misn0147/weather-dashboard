@@ -32,7 +32,8 @@ function runProgram() {
             var imageEl = document.querySelector("#icon");
             var currentIcon = weatherResult.current.weather[0].icon;
             var iconEl = document.createElement('img');
-            iconEl.setAttribute('src', 'http://openweathermap.org/img/wn/' + currentIcon + '@2x.png');
+            imageEl.innerHTML = '';
+            iconEl.setAttribute('src', 'http://openweathermap.org/img/wn/' + currentIcon + '.png');
             imageEl.appendChild(iconEl);
 
 
