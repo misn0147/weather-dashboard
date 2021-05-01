@@ -14,10 +14,7 @@ function showFuture() {
 function runProgram() {
     var cityName = document.getElementById('searchCity').value;
     console.log(cityName);
-    var newButton = document.createElement('button');
-    newButton.setAttribute('class', "history-btn");
-    newButton.textContent = cityName;
-    historyButtons.appendChild(newButton);
+    
 
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=d80f9148da9f22ae1bde4d77fec27e30')
         .then(function(cityNameData) {
@@ -25,12 +22,28 @@ function runProgram() {
         })
         .then(function(cityNameData) {
             console.log(cityNameData);
-            var searchReponse = cityNameData.name;
+            var searchResponse = cityNameData.name;
+            
+
+            localStorage.setItem('City', searchResponse);
+            var newButton = document.createElement('button');
+            newButton.setAttribute('class', "history-btn");
+            historyButtons.appendChild(newButton);
+
+            var storedSearch = localStorage.getItem('City');
+            if (storedSearch === null) {
+                return;
+            }
+            else {
+                newButton.textContent = storedSearch;
+            }
+
+
             var responseHeaderEl = document.querySelector('#response-header');
-            responseHeaderEl.innerHTML = '<h2>' + searchReponse + " " + currentDay + '<h2>';
+            responseHeaderEl.innerHTML = '<h2>' + searchResponse + " " + currentDay + '<h2>';
             var latitude = cityNameData.coord.lat;
             var longitude = cityNameData.coord.lon;
-            return fetch ('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=' + longitude + '&units=imperial' + '&appid=d80f9148da9f22ae1bde4d77fec27e30');
+            return fetch ('https://api.openweathermap.org/data/2.5/onecall?lat=' + latitude + '&lon=' + longitude + '&units=imperial' + '&appid=d80f9148da9f22ae1bde4d77fec27e30');            
         })
         .then(function(weatherResult) {
             return weatherResult.json();
@@ -99,4 +112,9 @@ function runProgram() {
             dayFiveEl.innerHTML = '<h4>' + fiveDays + '<br>' + '<br>' + "Temp: " + dayFiveTemp + '<br>' + "Wind: " + dayFiveWind + " MPH" + '<br>' + "Humidity: " + dayFiveHumid + "%" + '<h4>';
         })
     showFuture();
+
+    
+    
 };
+
+
