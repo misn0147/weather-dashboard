@@ -14,7 +14,6 @@ function showFuture() {
 function runProgram() {
     var cityName = document.getElementById('searchCity').value;
     console.log(cityName);
-    
 
     fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=d80f9148da9f22ae1bde4d77fec27e30')
         .then(function(cityNameData) {
@@ -61,7 +60,7 @@ function runProgram() {
 
             var tempResult = weatherResult.current.temp;
             var tempContainerEl = document.querySelector('#temp-container');
-            tempContainerEl.innerHTML = '<h5>' + "Temp: " + tempResult + '<h5>';
+            tempContainerEl.innerHTML = '<h5>' + "Temp: " + tempResult + "° F" + '<h5>';
 
             var windResult = weatherResult.current.wind_speed;
             var windContainerEl = document.querySelector('#wind-container');
@@ -81,40 +80,39 @@ function runProgram() {
             var dayOneWind = weatherResult.daily[0].wind_speed;
             var dayOneHumid = weatherResult.daily[0].humidity;
             var dayOneEl = document.querySelector('#day-one');
-            dayOneEl.innerHTML = '<h4>' + tomorrow + '<br>' + '<br>' + "Temp: " + dayOneTemp + '<br>' + "Wind: " + dayOneWind + " MPH" + '<br>' + "Humidity: " + dayOneHumid + "%" + '<h4>';
+            dayOneEl.innerHTML = '<h4>' + tomorrow + '<br>' + '<br>' + "Temp: " + dayOneTemp + "° F" + '<br>' + "Wind: " + dayOneWind + " MPH" + '<br>' + "Humidity: " + dayOneHumid + "%" + '<br>' + '<h4>';
 
             var twoDays = (moment().add(2, 'days').format('MM-DD-YYYY'))
             var dayTwoTemp = weatherResult.daily[1].temp.day;
             var dayTwoWind = weatherResult.daily[1].wind_speed;
             var dayTwoHumid = weatherResult.daily[1].humidity;
             var dayTwoEl = document.querySelector('#day-two');
-            dayTwoEl.innerHTML = '<h4>' + twoDays + '<br>' + '<br>' + "Temp: " + dayTwoTemp + '<br>' + "Wind: " + dayTwoWind + " MPH" + '<br>' + "Humidity: " + dayTwoHumid + "%" + '<h4>';
+            dayTwoEl.innerHTML = '<h4>' + twoDays + '<br>' + '<br>' + "Temp: " + dayTwoTemp + "° F" + '<br>' + "Wind: " + dayTwoWind + " MPH" + '<br>' + "Humidity: " + dayTwoHumid + "%" + '<h4>';
 
             var threeDays = (moment().add(3, 'days').format('MM-DD-YYYY'))
             var dayThreeTemp = weatherResult.daily[2].temp.day;
             var dayThreeWind = weatherResult.daily[2].wind_speed;
             var dayThreeHumid = weatherResult.daily[2].humidity;
             var dayThreeEl = document.querySelector('#day-three');
-            dayThreeEl.innerHTML = '<h4>' + threeDays + '<br>' + '<br>' + "Temp: " + dayThreeTemp + '<br>' + "Wind: " + dayThreeWind + " MPH" + '<br>' + "Humidity: " + dayThreeHumid + "%" + '<h4>';
+            dayThreeEl.innerHTML = '<h4>' + threeDays + '<br>' + '<br>' + "Temp: " + dayThreeTemp + "° F" + '<br>' + "Wind: " + dayThreeWind + " MPH" + '<br>' + "Humidity: " + dayThreeHumid + "%" + '<h4>';
 
             var fourDays = (moment().add(4, 'days').format('MM-DD-YYYY'))
             var dayFourTemp = weatherResult.daily[3].temp.day;
             var dayFourWind = weatherResult.daily[3].wind_speed;
             var dayFourHumid = weatherResult.daily[3].humidity;
             var dayFourEl = document.querySelector('#day-four');
-            dayFourEl.innerHTML = '<h4>' + fourDays + '<br>' + '<br>' + "Temp: " + dayFourTemp + '<br>' + "Wind: " + dayFourWind + " MPH" + '<br>' + "Humidity: " + dayFourHumid + "%" + '<h4>';
+            dayFourEl.innerHTML = '<h4>' + fourDays + '<br>' + '<br>' + "Temp: " + dayFourTemp + "° F" + '<br>' + "Wind: " + dayFourWind + " MPH" + '<br>' + "Humidity: " + dayFourHumid + "%" + '<h4>';
 
             var fiveDays = (moment().add(5, 'days').format('MM-DD-YYYY'))
             var dayFiveTemp = weatherResult.daily[4].temp.day;
             var dayFiveWind = weatherResult.daily[4].wind_speed;
             var dayFiveHumid = weatherResult.daily[4].humidity;
             var dayFiveEl = document.querySelector('#day-five');
-            dayFiveEl.innerHTML = '<h4>' + fiveDays + '<br>' + '<br>' + "Temp: " + dayFiveTemp + '<br>' + "Wind: " + dayFiveWind + " MPH" + '<br>' + "Humidity: " + dayFiveHumid + "%" + '<h4>';
+            dayFiveEl.innerHTML = '<h4>' + fiveDays + '<br>' + '<br>' + "Temp: " + dayFiveTemp + "° F" + '<br>' + "Wind: " + dayFiveWind + " MPH" + '<br>' + "Humidity: " + dayFiveHumid + "%" + '<h4>';
         })
     showFuture();
 
-    
-    
-};
+    document.getElementById('searchCity').value='';
 
+};
 
