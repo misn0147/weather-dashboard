@@ -11,7 +11,7 @@ function showFuture() {
 }
 
 
-function runProgram() {
+function runProgram(cityName) {
     var cityName = document.getElementById('searchCity').value;
     console.log(cityName);
 
@@ -23,19 +23,22 @@ function runProgram() {
             console.log(cityNameData);
             var searchResponse = cityNameData.name;
             
-
-            localStorage.setItem('City', searchResponse);
+            
+            localStorage.setItem('City', JSON.stringify(searchResponse));
             var newButton = document.createElement('button');
             newButton.setAttribute('class', "history-btn");
             historyButtons.appendChild(newButton);
 
-            var storedSearch = localStorage.getItem('City');
-            if (storedSearch === null) {
-                return;
-            }
-            else {
-                newButton.textContent = storedSearch;
-            }
+            var storedSearch = JSON.parse(localStorage.getItem('City'));
+            newButton.textContent = storedSearch;
+            
+            newButton.addEventListener("click", function() {
+                var buttonText = newButton.innerHTML;
+                console.log(buttonText);
+                document.getElementById('searchCity').value = buttonText;
+                newButton.remove();
+            });
+            
 
 
             var responseHeaderEl = document.querySelector('#response-header');
